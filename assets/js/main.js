@@ -1,21 +1,5 @@
 
 
-
-
-// creare lista ingredienti e assegnare prezzo a ciascuno
-
-//lstenEvent(click) sul pulsante generate
-
-
-
-
-var ingredienti = [
-    ['cheese', '1.5'],
-    ['mostarda', '0.5'],
-    ['formaggio', '1.5'],
-    ['lattuga', '0.25']
-];
-
 // creare lista ingredienti e assegnare prezzo a ciascuno
 var ingredienti = [
     ['cheese', '1.5'],
@@ -23,7 +7,8 @@ var ingredienti = [
     ['mustard', '1'],
     ['tomato', '1.25'],
     ['lettuce', '0.3'],
-    ['ketchup', '0.25']
+    ['ketchup', '0.25'],
+    
 ];
 
 
@@ -63,46 +48,48 @@ document.querySelector('button').addEventListener('click', function() {
 
     if (nameBurgerEl.value == "") {
         alert('Dai un nome al tuo panino');
-    }
+    }else{
 
-    // definisci prezzo base panino
-    var prezzoPanino = 2;
-
-    //incremento il prezzo quando un ingrediente viene selezionato
-
-    //prendo tutti gli elementi di tipo input che sono checkbox
-    var checks = document.querySelectorAll("input[type='checkbox']");
+        // definisci prezzo base panino
+        var prezzoPanino = 2;
     
-    var sommaIngredienti = null;
-
-    for (var i = 0; i < checks.length; i++){
-        // controllo se gli elementi sono selezionati
-        var element = checks[i];
-        if(element.checked){
-            sommaIngredienti += Number(element.getAttribute('data-price'));
+        //incremento il prezzo quando un ingrediente viene selezionato
+    
+        //prendo tutti gli elementi di tipo input che sono checkbox
+        var checks = document.querySelectorAll("input[type='checkbox']");
+        
+        var sommaIngredienti = null;
+    
+        for (var i = 0; i < checks.length; i++){
+            // controllo se gli elementi sono selezionati
+            var element = checks[i];
+            if(element.checked){
+                sommaIngredienti += Number(element.getAttribute('data-price'));
+            }
         }
+      
+        var prezzoTotale = prezzoPanino + sommaIngredienti;
+        console.log(prezzoTotale);
+    
+        //definire codici sconto e calcolo prezzo finale
+        var listaCoupon = [
+            '12345AABBCC',
+            '11223AACCDD',
+            '11224AADDBB',
+            '12234AACCBB'
+        ];
+    
+        var couponEl = document.getElementById("coupon");
+        var scontoCoupon = prezzoTotale * 0.15;
+        if (listaCoupon.includes(couponEl.value)) {
+            prezzoTotale -= scontoCoupon;
+        }
+        console.log(prezzoTotale.toFixed(2));
+    
+        var priceEl = document.getElementById("price");
+        priceEl.innerHTML = '€ ' + prezzoTotale.toFixed(2);
     }
-  
-    var prezzoTotale = prezzoPanino + sommaIngredienti;
-    console.log(prezzoTotale);
 
-    //definire codici sconto e calcolo prezzo finale
-    var listaCoupon = [
-        '12345AABBCC',
-        '11223AACCDD',
-        '11224AADDBB',
-        '12234AACCBB'
-    ];
-
-    var couponEl = document.getElementById("coupon");
-    var scontoCoupon = prezzoTotale * 0.15;
-    if (listaCoupon.includes(couponEl.value)) {
-        prezzoTotale -= scontoCoupon;
-    }
-    console.log(prezzoTotale.toFixed(2));
-
-    var priceEl = document.getElementById("price");
-    priceEl.innerHTML = '€ ' + prezzoTotale.toFixed(2);
 })
 
 
