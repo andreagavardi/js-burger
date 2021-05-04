@@ -4,30 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JS-Burgher</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     
-    <header id="site_header">
-        <h1>create your burgher</h1>
-    </header>
+    <div class="container">
+        <header id="site_header" class="d-flex justify-content-between">
+            <h1 class="font-weight-bolder">Create Your Burgher</h1>
+            <img  src="./assets/img/burger-top.png" alt="disegno hamburger" >
+        </header>
+        
+        <main id="site_main" class=" px-5 py-4">
+            <input type="text" name="burger-name" id="burger-name" placeholder="Name Your Burger">
+            <h2 class="pt-4">ingredienti</h2>
+        
+            <section class="ingredienti  row py-3 ">
+               
+            </section>
+        
+            <div class="form_group">
+                <label for="coupon">Discount Coupon</label>
+                <input type="text" name="coupon" id="coupon" placeholder="12345ABCDEF">
+            </div>
+            <div class="confirm_button d-flex justify-content-center">
+                <button class="btn">calculate</button>
 
-    <main id="site_main">
-        <h2>name your burgher</h2>
-        <h3>ingredienti</h3>
-
-        <section class="ingredienti">
-            <!-- <div class="form_group">
-                <label for="${list[counter][0]}">${list[counter][0]}</label>
-                <input type="checkbox" name="${list[counter][0]}" id="${list[counter][0]}" data-price="${list[counter][1]}">
-            
-            </div> -->
-        </section>
-        <button>crea</button>
-    </main>
-
-    <footer id="site_footer"></footer>
+            </div>
+        </main>
+        
+        <footer id="site_footer" class="d-flex justify-content-between p-4 text-white ">
+            <h2>Your Price</h2>
+            <h2 id="price"></h2>
+        </footer>
+    </div>
 
 
     <script src="./assets/js/main.js"></script>

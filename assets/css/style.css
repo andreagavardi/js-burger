@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+body {
+  background-color: #fff5e2;
+}
+#site_main {
+  background-color: white;
+}
+
+/***************
+HEADER CSS
+***************/
+#site_header {
+  background-color: #fdbb3f;
+  position: relative;
+  padding: 3rem;
+}
+#site_header img {
+  position: absolute;
+  border-radius: 50%;
+  top: -14px;
+  right: -70px;
+}
+
+/**************
+MAIN CSS
+**************/
+
+input#burger-name {
+  font-size: 2rem;
+  border: none;
+}
+
+.ingredienti .form_group input,
+.ingredienti .form_group label {
+  margin-left: 1.5rem;
+}
+.ingredienti .form_group input {
+  height: 1.5rem;
+}
+.ingredienti .form_group input::after {
+  content: "add";
+  display: inline-block;
+  margin-left: 1.5rem;
+  color: purple;
+}
+
+input#coupon {
+  width: 70%;
+  background-color: #fff5e2;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 5px 10px;
+}
+
+.btn {
+  background-color: #fdbb3f;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/***************
+FOOTER CSS
+**************/
+
+#site_footer {
+  background-color: #d34159;
+}
+
+#site_footer h2 {
+  font-weight: 900;
+}

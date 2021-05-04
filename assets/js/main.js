@@ -15,10 +15,6 @@ var ingredienti = [
     ['formaggio', '1.5'],
     ['lattuga', '0.25']
 ];
-console.log(ingredienti[1][0]);
-
-
-
 
 // creare lista ingredienti e assegnare prezzo a ciascuno
 var ingredienti = [
@@ -48,10 +44,10 @@ function inserisciIngredienti(list, el) {
     while (counter < list.length) {
         el.insertAdjacentHTML('beforeEnd',
          `
-            <div class="form_group">
+            <div class="form_group col-6 py-2 px-3 d-flex align-items-center ">
                 <img width ="60" src="./assets/img/${list[counter][0] + '.svg'} " alt="immagine ${list[counter][0]}">
                 <label for="${list[counter][0]}">${list[counter][0]}</label>
-                <input type="checkbox" name="${list[counter][0]}" id="${list[counter][0]}" data-price="${list[counter][1]}">
+                <input class="d-flex align-content-center" type="checkbox" name="${list[counter][0]}" id="${list[counter][0]}" data-price="${list[counter][1]}">
 
             </div>
         `);
@@ -60,7 +56,54 @@ function inserisciIngredienti(list, el) {
     }
 }
 
+//calcolo il prezzo in base agli elementi checkati
+document.querySelector('button').addEventListener('click', function() {
 
+    var nameBurgerEl = document.getElementById("burger-name");
+
+    if (nameBurgerEl.value == "") {
+        alert('Dai un nome al tuo panino');
+    }
+
+    // definisci prezzo base panino
+    var prezzoPanino = 2;
+
+    //incremento il prezzo quando un ingrediente viene selezionato
+
+    //prendo tutti gli elementi di tipo input che sono checkbox
+    var checks = document.querySelectorAll("input[type='checkbox']");
+    
+    var sommaIngredienti = null;
+
+    for (var i = 0; i < checks.length; i++){
+        // controllo se gli elementi sono selezionati
+        var element = checks[i];
+        if(element.checked){
+            sommaIngredienti += Number(element.getAttribute('data-price'));
+        }
+    }
+  
+    var prezzoTotale = prezzoPanino + sommaIngredienti;
+    console.log(prezzoTotale);
+
+    //definire codici sconto e calcolo prezzo finale
+    var listaCoupon = [
+        '12345AABBCC',
+        '11223AACCDD',
+        '11224AADDBB',
+        '12234AACCBB'
+    ];
+
+    var couponEl = document.getElementById("coupon");
+    var scontoCoupon = prezzoTotale * 0.15;
+    if (listaCoupon.includes(couponEl.value)) {
+        prezzoTotale -= scontoCoupon;
+    }
+    console.log(prezzoTotale.toFixed(2));
+
+    var priceEl = document.getElementById("price");
+    priceEl.innerHTML = '€ ' + prezzoTotale.toFixed(2);
+})
 
 
 
